@@ -1,0 +1,24 @@
+{
+  "name": "epitech-norm-linter",
+  "main": "./lib/epitech-norm-linter",
+  "version": "0.0.1",
+  "description": "Lint projects using your Epitech norminette",
+  "repository": "https://github.com/atom/epitech-norm-linter",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
+  },
+  "dependencies": {
+    "atom-package-deps": "^3.0.6"
+  },
+  "package-deps": [
+    "linter"
+  ]
+}
