@@ -3,8 +3,10 @@
   "main": "./lib/epitech-norm-linter",
   "version": "0.0.1",
   "description": "Lint projects using your Epitech norminette",
-  "repository": "https://github.com/atom/epitech-norm-linter",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arignir/Epitech-norm-linter.git"
+  },
   "engines": {
     "atom": ">0.50.0"
   },
