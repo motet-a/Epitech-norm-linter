@@ -14,6 +14,7 @@ module.exports = EpitechNormLinter =
     LinterProvider = require('./provider')
     @provider = new LinterProvider()
     return {
+      name: "Epitech"
       grammarScopes: ['source.c']
       scope: 'file'
       lint: @provider.lint
