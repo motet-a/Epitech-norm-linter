@@ -1,11 +1,12 @@
 module.exports = EpitechNormLinter =
   config:
+    executablePath:
+      type: 'string'
+      description: 'Works only with the norminette of duponc_j. Must be executable.'
+      default: '~/norminette'
     arguments:
       type: 'string'
       default: ''
-    executablePath:
-      type: 'string'
-      default: '~/norminette'
 
   activate: ->
     require('atom-package-deps').install 'epitech-norm-linter'
