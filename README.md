@@ -1,7 +1,7 @@
 # Epitech Norm Linter
 Atom package that lint your code with your norminette
 
-###### By [Arignir]
+###### By [Arignir](mailto:benjamin.grange@epitech.eu)
 
 ## Use
 
