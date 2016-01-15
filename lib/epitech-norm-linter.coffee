@@ -2,7 +2,7 @@ module.exports = EpitechNormLinter =
   config:
     executablePath:
       type: 'string'
-      description: 'Works only with the norminette of duponc_j. Must be executable.'
+      description: 'Works only with the norminette made by duponc_j and all norminettes with same output. Must be executable.'
       default: '~/norminette'
 
   activate: ->
