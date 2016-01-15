@@ -6,7 +6,7 @@ module.exports = class LinterProvider
   getCommand = (textEditor) ->
     cmd = atom.config.get 'epitech-norm-linter.executablePath'
     cmd += " " + textEditor.getPath()
-    cmd += " " + atom.config.get 'epitech-norm-linter.arguments'
+    cmd += " -verbose -nocheat -score -printline -return"
     return cmd
 
   lint: (textEditor) =>
@@ -18,12 +18,12 @@ module.exports = class LinterProvider
       process.on 'close', ->
         toReturn = []
         for line in data.split('\n')
-          if line.match(/^\(\'Erreur/i)
-            linenb = line.split(', ')[3]
-            error = (line.split(', ')[5]).split("\"")[1] || (line.split(', ')[5]).split("\'")[1];
+          if line.match(/^Erreur/i)
+            linenb = line.split(' ')[6]
+            error = line.split(':')[1]
             toReturn.push(
               type: "Trace",
-              text: "Faute de norme à la ligne " + linenb + ": " + error,
+              text: "Faute de norme à la ligne " + linenb + " :" + error,
               range: [[parseInt(linenb, 10) - 1, 0], [parseInt(linenb, 10) - 1, 1000000]],
               filePath: textEditor.getPath())
         resolve toReturn
