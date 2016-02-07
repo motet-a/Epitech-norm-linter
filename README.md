@@ -19,6 +19,6 @@ Atom package that lint your code with your norminette
 
 * Download the norminette made by duponc_j (it's made with python) or make one with the same output.
 
-* Set the norminette as executable (```chmod 755 file.py```).
+* Set the norminette as executable (```chmod +x file.py```).
 
 * Change the absolute path to your new norminette in the [epitech-norm-linter](https://github.com/Arignir/epitech-norm-linter) config pane.
