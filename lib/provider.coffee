@@ -1,29 +1,59 @@
 child_process = require 'child_process'
 path = require 'path'
+fs = require 'fs'
 
 module.exports = class LinterProvider
 
-  getCommand = (textEditor) ->
-    cmd = atom.config.get 'epitech-norm-linter.executablePath'
-    cmd += " " + textEditor.getPath()
-    cmd += " -verbose -nocheat -score -printline -return"
+  getCommand = (textEditor, fileName) ->
+    cmd = atom.config.get 'epitech-norm-linter.a_pythonPath'
+    cmd += " ../norminette/norm.py"
+    cmd += " " + fileName   #textEditor.getPath()
+    cmd += " -nocheat -printline"
+    if (!atom.config.get 'epitech-norm-linter.c_verifyComment')
+      cmd += " -comment"
+    if (atom.config.get 'epitech-norm-linter.d_verifyReturn')
+      cmd += " -return"
+    if (atom.config.get 'epitech-norm-linter.e_verifyLibc')
+      cmd += " -libc"
+    if (atom.config.get 'epitech-norm-linter.f_showDebug')
+      console.log("Epitech-norm-linter: " + cmd)
     return cmd
 
-  lint: (textEditor) =>
+  lintFile = (textEditor, fileName) =>
     return new Promise (resolve) ->
-      projectPath = atom.project.getPaths()[0]
       data = ''
-      process = child_process.exec(getCommand(textEditor), {cwd: projectPath})
+      cmd = getCommand(textEditor, fileName)
+      process = child_process.exec(cmd, {cwd: __dirname})
       process.stdout.on 'data', (d) -> data = d.toString()
       process.on 'close', ->
         toReturn = []
+        if (atom.config.get 'epitech-norm-linter.f_showDebug')
+          console.log("Output norminette: " + data)
         for line in data.split('\n')
           if line.match(/^Erreur/i)
             linenb = line.split(' ')[6]
             error = line.split(':')[1]
             toReturn.push(
-              type: "Trace",
-              text: "Faute de norme à la ligne " + linenb + " :" + error,
+              type: "Norme",
+              text: "Faute de norme à la ligne " + linenb + " :" + error + " ",
               range: [[parseInt(linenb, 10) - 1, 0], [parseInt(linenb, 10) - 1, 1000000]],
               filePath: textEditor.getPath())
         resolve toReturn
+
+  lintOnFly = (textEditor) =>
+    path = __dirname + "/../norminette/tempNormLinter.c"
+    fs.writeFile path, textEditor.getText().toString(), (err) =>
+       if (err)
+        throw err;
+      if (atom.config.get 'epitech-norm-linter.f_showDebug')
+        console.log("File saved ! Path: " + path);
+      lintFile(textEditor, path);
+
+  lintOnSave = (textEditor) =>
+    lintFile(textEditor, textEditor.getPath())
+
+  lint: (textEditor) =>
+    if (atom.config.get('epitech-norm-linter.b_lintOnFly'))
+      lintOnFly(textEditor)
+    else
+      lintOnSave(textEditor)

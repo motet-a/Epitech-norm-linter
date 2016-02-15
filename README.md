@@ -1,24 +1,22 @@
 # Epitech Norm Linter
-Atom package that lint your code with your norminette
+An Atom package that lints your code with a norminette
 
-###### By [Arignir](mailto:benjamin.grange@epitech.eu)
+###### By [Arignir](mailto:tigearth@hotmail.fr)
 
 ## Use
 
-* This package need the [linter](https://github.com/AtomLinter/Linter) package to works.
+* This package needs the [linter](https://github.com/AtomLinter/Linter) package to work.
 
-* When you save a file, your norminette will be executed and the result will be broadcast using the [linter](https://github.com/AtomLinter/Linter) package.
+* When you save a file, a norminette will be executed and the result will be displayed using the [linter](https://github.com/AtomLinter/Linter) package.
 
-* This package works with the norminette made by duponc_j and all norminettes with same output
+* This package works with the norminette made by duponc_j and all norminettes with same output. (Just edit the ```norm.py``` script).
 
 ## Screenshot
 
 ![epitech-norm-linter screenshot](http://nsa38.casimages.com/img/2016/01/15/160115105629229328.png)
 
-## Installation
+## Debug
 
-* Download the norminette made by duponc_j (it's made with python) or make one with the same output.
+* If the package doesn't work, try another version of Python on the configuration panel. Python 3.x are recommended.
 
-* Set the norminette as executable (```chmod +x file.py```).
-
-* Change the absolute path to your new norminette in the [epitech-norm-linter](https://github.com/Arignir/epitech-norm-linter) config pane.
+* If your problem persists, feel free to post an new [issue](https://github.com/Arignir/Epitech-norm-linter/issues) on the GitHub's project !

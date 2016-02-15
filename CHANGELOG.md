@@ -1,3 +1,6 @@
+## 1.7.0 - Default norminette
+* Added a default norminette (Made by duponc_j).
+
 ## 1.5.0 - Installation explications
 
 * Added installation explications

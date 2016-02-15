@@ -1,9 +1,35 @@
 module.exports = EpitechNormLinter =
   config:
-    executablePath:
+    a_pythonPath:
+      title: 'Python Executable Path'
       type: 'string'
-      description: 'Works only with the norminette made by duponc_j and all norminettes with same output. Must be executable.'
-      default: '~/norminette'
+      description: 'Path to Python. Edit this only if Epitech-norm-linter doesn\'t work by default. If so, use another version of Python.\n\nEg: Python2, Python3.3, Python3.4, Python3.5 etc...'
+      default: 'python3'
+    b_lintOnFly:
+      title: 'Lint on fly'
+      description: 'When enabled, lints your code while typing. When disabled, lints your code while saving.'
+      type: 'boolean'
+      default: true
+    c_verifyComment:
+      title: 'Enable comments verification'
+      description: 'Counts comments as a norm error, and displays a message.'
+      type: 'boolean'
+      default: true
+    d_verifyReturn:
+      title: 'Enable return verification'
+      description: 'Will verify the \"return ;\" and \"return;\" case. Set at false if you don\'t want so.'
+      type: 'boolean'
+      default: true
+    e_verifyLibc:
+      title: 'Verify libc functions'
+      description: 'Will search for some libc forbidden functions.\n\nThe fobidden functions are: printf, atof, atoi, atol, strcmp, strlen, strcat, strncat, strncmp, strcpy, strncpy, fprintf, strstr, strtoc, sprintf, asprintf, perror, strtod, strtol, strtoul.'
+      type: 'boolean'
+      default: true
+    f_showDebug:
+      title: 'Print logs on console'
+      description: 'Enable this only if you\'re having an issue and want to help the developer solve it.'
+      type: 'boolean'
+      default: false
 
   activate: ->
     require('atom-package-deps').install 'epitech-norm-linter'
@@ -12,7 +38,6 @@ module.exports = EpitechNormLinter =
     LinterProvider = require('./provider')
     @provider = new LinterProvider()
     return {
-      name: "Epitech"
       grammarScopes: ['source.c']
       scope: 'file'
       lint: @provider.lint

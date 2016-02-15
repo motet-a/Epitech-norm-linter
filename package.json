@@ -2,15 +2,22 @@
   "name": "epitech-norm-linter",
   "main": "./lib/epitech-norm-linter",
   "version": "1.6.0",
-  "description": "Lint projects using your Epitech norminette",
+  "description": "Lint your projects using your Epitech norminette",
   "keywords": [
+    "epitech",
+    "norm",
+    "norme",
     "lint",
     "linter",
-    "c",
-    "epitech",
-    "norme",
     "norminette",
-    "moulinette"
+    "moulinette",
+    "save",
+    "c",
+    "lintonfly",
+    "lintonthefly",
+    "tekpi",
+    "epitech-norm",
+    "epitech-norme"
   ],
   "repository": {
     "type": "git",
