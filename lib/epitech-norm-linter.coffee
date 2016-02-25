@@ -15,11 +15,6 @@ module.exports = EpitechNormLinter =
       description: 'Counts comments as a norm error, and displays a message.'
       type: 'boolean'
       default: true
-    d_verifyReturn:
-      title: 'Enable return verification'
-      description: 'Will verify the \"return ;\" and \"return;\" case. Set at false if you don\'t want so.'
-      type: 'boolean'
-      default: true
     e_verifyLibc:
       title: 'Verify libc functions'
       description: 'Will search for some libc forbidden functions.\n\nThe fobidden functions are: printf, atof, atoi, atol, strcmp, strlen, strcat, strncat, strncmp, strcpy, strncpy, fprintf, strstr, strtoc, sprintf, asprintf, perror, strtod, strtol, strtoul.'

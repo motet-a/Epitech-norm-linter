@@ -8,11 +8,9 @@ module.exports = class LinterProvider
     cmd = atom.config.get 'epitech-norm-linter.a_pythonPath'
     cmd += " ../norminette/norm.py"
     cmd += " " + fileName   #textEditor.getPath()
-    cmd += " -nocheat -printline"
+    cmd += " -nocheat -malloc"
     if (!atom.config.get 'epitech-norm-linter.c_verifyComment')
       cmd += " -comment"
-    if (atom.config.get 'epitech-norm-linter.d_verifyReturn')
-      cmd += " -return"
     if (atom.config.get 'epitech-norm-linter.e_verifyLibc')
       cmd += " -libc"
     if (atom.config.get 'epitech-norm-linter.f_showDebug')
@@ -31,11 +29,11 @@ module.exports = class LinterProvider
           console.log("Output norminette: " + data)
         for line in data.split('\n')
           if line.match(/^Erreur/i)
-            linenb = line.split(' ')[6]
-            error = line.split(':')[1]
+            linenb = (line.split(' ')[6]).split(':')[0];
+            error = (line.split(':')[1]).split("=>")[0];
             toReturn.push(
               type: "Norme",
-              text: "Faute de norme à la ligne " + linenb + " :" + error + " ",
+              text: "Faute de norme à la ligne " + linenb + " : " + error,
               range: [[parseInt(linenb, 10) - 1, 0], [parseInt(linenb, 10) - 1, 1000000]],
               filePath: textEditor.getPath())
         resolve toReturn

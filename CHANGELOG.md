@@ -1,3 +1,6 @@
+## 1.8.0 - Updated default norminette
+* Updated default norminette, now finding much more norm errors.
+
 ## 1.7.0 - Default norminette
 * Added a default norminette (Made by duponc_j).
 
